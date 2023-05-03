@@ -1,0 +1,11 @@
+CREATE A VIDEO RUN THROUGH
+Use Node.js, Inqurier and MySQL
+** DONE npm init -y
+** DONE npm i express
+** DONE npm i inquirer@8.2.4.
+npm i npm install --save mysql2
+** DONE npm i console.table --save
+
+create schema
+create seeds with populated sample data
+create CL prompts
