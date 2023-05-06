@@ -2,6 +2,12 @@
 const connection = require('../db/connection')
 const inquirer = require('inquirer');
 
+function viewEmployee() {
+    connection.query('SELECT * FROM employee;', function (err, results, fields) {
+        console.log(results);
+    });
+}
+
 function addEmployee() {
     inquirer.prompt([{
         name: 'firstname',
@@ -30,4 +36,4 @@ function addEmployee() {
     });
 
 }
-module.exports = { addEmployee }
+module.exports = { addEmployee, viewEmployee }

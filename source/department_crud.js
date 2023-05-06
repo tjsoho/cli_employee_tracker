@@ -14,7 +14,6 @@ function addDepartment() {
       message: 'write department name',
    }]).then(res => {
       connection.query('INSERT INTO department SET name = ?;', res.name, function (err, results, fields) {
-         console.log(results);
       });
    })
 }
