@@ -17,9 +17,9 @@ function addEmployee() {
             inquirer.prompt([{
                 type: 'list',
                 name: 'title',
-                message: 'write role',
+                message: 'write role title',
                 choices: ["Finance", "Sales", "Engineering", "Legal"]
-                // TODO choices: results.map(x => {id: x.id, rolename: x.title})
+                
             }]).then(roleRes => {
 
                 connection.query('INSERT INTO department SET name = ?, role_id = ?;', res.firstname, roleRes.id, function (err, results, fields) {
