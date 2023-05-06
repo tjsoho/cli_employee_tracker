@@ -4,7 +4,7 @@ const inquirer = require('inquirer');
 
 function viewEmployee() {
     connection.query('SELECT * FROM employee;', function (err, results, fields) {
-        console.log(results);
+        console.table(results);
     });
 }
 
@@ -24,7 +24,25 @@ function addEmployee() {
                 type: 'list',
                 name: 'title',
                 message: 'write role title',
-                choices: ["Finance", "Sales", "Engineering", "Legal"]
+                choices: [
+                    {
+                        name: 'Sales',
+                        value: 1
+                    },
+                    {
+                        name: 'Engineering',
+                        value: 2
+                    },
+                    {
+                        name: 'Finance',
+                        value: 3
+                    },
+                    {
+                        name: 'Legal',
+                        value: 4
+                    },
+            
+                ]
                 
             }]).then(roleRes => {
 
