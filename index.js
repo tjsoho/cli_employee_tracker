@@ -1,11 +1,24 @@
-//WHEN I enter a description, installation instructions, usage information, contribution guidelines, and test instructions
-// THEN this information is added to the sections of the README entitled Description, Installation, Usage, Contributing, and Tests
+
 
 // TODO: Include packages needed for this application
 const fs = require("fs");
 const inquirer = require("inquirer");
 const mysql = require('mysql2');
+const view_department = require("./source/view_department");
 require('console.table');
+
+// Connect to database
+const db = mysql.createConnection(
+    {
+      host: 'localhost',
+      // MySQL username,
+      user: 'root',
+      // MySQL password
+      password: 'tjcarroll1',
+      database: 'employee_tracker_db'
+    },
+    console.log(`Connected to the employee_tracker_db database.`)
+  );
 
 
 // TODO: Create an array of questions for user input
@@ -27,45 +40,17 @@ const questions = [
 ];
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFileSync(fileName, data, (err) => {
-        err ? console.log(err) : console.log("successful readme")
-    })
-}
-
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions)
-        .then((answers) => {
-            console.log(answers);
-            return writeToFile("README.md", generateMarkdown(answers))
-        })
+    inquirer.prompt(questions).then(answers => {
+        if(answers.action === 'view all departments'){
+            DESCRIBE department;
+        } else if (answers.action === 'view all roles') {
+            console.log('roles')
+        } else if (answers.action === 'view all employees') {
+            console.log('employees')
+        }  
+    })
 }
 
 // Function call to initialize app
