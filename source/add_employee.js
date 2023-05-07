@@ -16,10 +16,11 @@ function addEmployee() {
     {
         name: 'lastname',
         message: 'write surname',
+        
     },
     ]).then(res => {
-        connection.query('SELECT * FROM roles;', function (err, results, fields) {
-            console.log(results)
+        connection.query('SELECT * FROM employee;', function (err, results, fields) {
+            console.table(results)
             inquirer.prompt([{
                 type: 'list',
                 name: 'title',
@@ -46,7 +47,7 @@ function addEmployee() {
                 
             }]).then(roleRes => {
 
-                connection.query('INSERT INTO department SET name = ?, role_id = ?;', res.firstname, roleRes.id, function (err, results, fields) {
+                connection.query('INSERT INTO employee SET first_name = ?, last_name = ?, role_id = ?;', [res.firstname, roleRes.id], function (err, results, fields) {
                     console.log(results);
                 });
             })
