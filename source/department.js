@@ -1,10 +1,12 @@
 const connection = require('../db/connection')
 const { prompt } = require('inquirer')
+const {init} = require('../index')
 
 
 function viewAllDepartments() {
    connection.query('SELECT * FROM department;', function (err, results, fields) {
       console.table(results);
+      init();
    });
 }
 
