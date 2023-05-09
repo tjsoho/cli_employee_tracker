@@ -5,13 +5,16 @@ const inquirer = require('inquirer');
 function viewEmployee() {
     connection.query('SELECT * FROM employee;', function (err, results, fields) {
         console.table(results);
+        console.log("\n");
+        console.log("\n");
+        console.log("use up an down arrows to navigate back through the menu");
     });
 }
 
 function addEmployee() {
     inquirer.prompt([{
         name: 'firstname',
-        message: 'write name',
+        message: 'write firstname',
     },
     {
         name: 'lastname',
@@ -51,6 +54,9 @@ function addEmployee() {
                     if (err) console.log(err);
                     connection.query('SELECT * FROM employee;', function (err, results, fields) {
                         console.table(results);
+                        console.log("\n");
+                        console.log("\n");
+                        console.log("use up an down arrows to navigate back through the menu");
                     });
                 });
             })
@@ -102,6 +108,9 @@ function updateEmployee() {
                     console.log(`Employee ${res.employee} has been updated.`);
                     connection.query('SELECT * FROM employee;', function (err, results, fields) {
                         console.table(results);
+                        console.log("\n");
+                        console.log("\n");
+                        console.log("use up an down arrows to navigate back through the menu");
                     });
                 });
             });
@@ -129,6 +138,9 @@ function deleteEmployee() {
                 console.log(`Employee ${res.employee} has been deleted.`);
                 connection.query('SELECT * FROM employee;', function (err, results, fields) {
                     console.table(results);
+                    console.log("\n");
+                    console.log("\n");
+                    console.log("use up an down arrows to navigate back through the menu");
                 });
             });
         });

@@ -11,24 +11,25 @@ const { viewAllRoles, addRole } = require('./source/roles')
 
 // TODO: Create an array of questions for user input
 
-const questions = [
-  {
-    type: "list",
-    name: "action",
-    message: "What would you like to do?",
-    choices: [
-      "view all departments",
-      "add a department",
-      "delete a department",
-      "view all roles",
-      "add a role",
-      "view all employees",
-      "delete an employee",
-      "add an employee",
-      "update an employee role",
-    ]
-  },
-];
+const questions =
+  [
+    {
+      type: "list",
+      name: "action",
+      message: "What would you like to do?",
+      choices: [
+        "view all departments",
+        "add a department",
+        "delete a department",
+        "view all roles",
+        "add a role",
+        "view all employees",
+        "delete an employee",
+        "add an employee",
+        "update an employee role",
+      ]
+    },
+  ];
 
 
 // TODO: Create a function to initialize app
@@ -54,10 +55,13 @@ function init() {
       } else if (answers.action === 'delete an employee') {
         deleteEmployee()
       }
+      console.log("\n");
       askQuestions()
+      console.log("\n");
     })
   }
-  // function to call the questions
+  // function to call the questions\
+  console.log("\n");
   askQuestions()
 }
 
