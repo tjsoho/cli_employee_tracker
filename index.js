@@ -2,7 +2,7 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
 const mysql = require('mysql2');
-const { viewAllDepartments, addDepartment } = require("./source/department");
+const { viewAllDepartments, addDepartment, deleteDepartment } = require("./source/department");
 const { viewEmployee, addEmployee, updateEmployee, deleteEmployee } = require('./source/add_employee')
 const { viewAllRoles, addRole } = require('./source/roles')
 
@@ -19,6 +19,7 @@ const questions = [
     choices: [
       "view all departments",
       "add a department",
+      "delete a department",
       "view all roles",
       "add a role",
       "view all employees",
@@ -38,6 +39,8 @@ function init() {
         viewAllDepartments();
       } else if (answers.action === 'add a department') {
         addDepartment()
+      } else if (answers.action === 'delete a department') {
+        deleteDepartment()
       } else if (answers.action === 'view all roles') {
         viewAllRoles()
       } else if (answers.action === 'add a role') {
@@ -51,6 +54,7 @@ function init() {
       } else if (answers.action === 'delete an employee') {
         deleteEmployee()
       }
+      askQuestions()
     })
   }
   // function to call the questions

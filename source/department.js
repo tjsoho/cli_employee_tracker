@@ -1,12 +1,11 @@
 const connection = require('../db/connection')
 const { prompt } = require('inquirer')
-const {init} = require('../index')
+
 
 
 function viewAllDepartments() {
    connection.query('SELECT * FROM department;', function (err, results, fields) {
       console.table(results);
-      init();
    });
 }
 
@@ -24,7 +23,26 @@ function addDepartment() {
    })
 }
 
+function deleteDepartment() {
+   connection.query('SELECT * FROM department;', function (err, results, fields) {
+      console.table(results)
+      prompt([{
+         type: 'list',
+         name: 'id',
+         message: 'write department name',
+         choices: results.map(result => ({ name: `${result.name}`, value: result.id }))
+      }]).then(res => {
+         connection.query('DELETE FROM department WHERE id = ?;', res.id, function (err, results, fields) {
+            connection.query('SELECT * FROM department;', function (err, results, fields) {
+               console.table(results);
+            });
+         })
+      })
+   })
+}
 
 
 
-module.exports = { viewAllDepartments, addDepartment };
+
+
+module.exports = { viewAllDepartments, addDepartment, deleteDepartment };
